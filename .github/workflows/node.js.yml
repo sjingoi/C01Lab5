@@ -22,11 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - name: Start Server
-      #   uses: MongoCamp/mongodb-github-action@1.0.0
-      #   with:
-      #     mongodb-version: ${{ matrix.mongodb-version }}
-      # - run: curl http://localhost:27017
+      - name: Start Server
+        uses: MongoCamp/mongodb-github-action@1.0.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+      - run: curl http://localhost:27017
+
       - name: Start Server ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
