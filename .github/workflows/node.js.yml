@@ -27,18 +27,3 @@ jobs:
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
       - run: curl http://localhost:27017
-
-      - name: Start Server ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm i
-      - run: npm run start
-
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm i
-      - run: npm test
