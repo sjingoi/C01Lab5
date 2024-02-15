@@ -20,12 +20,17 @@ test("/postNote - Post a note", async () => {
   expect(postNoteRes.status).toBe(200);
   expect(postNoteBody.response).toBe("Note added succesfully.");
 
-  await fetch(`${SERVER_URL}/deleteAllNotes`, {
+  const deleteAllNotesRes = await fetch(`${SERVER_URL}/deleteAllNotes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
   }); 
+
+    const deleteAllNotesBody = await deleteAllNotesRes.json();
+
+    expect(deleteAllNotesRes.status).toBe(200)
+    expect(deleteAllNotesBody.response).toBe(`1 note(s) deleted.`) 
 });
 
 test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
@@ -70,12 +75,17 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
     expect(getAllNotesRes.status).toBe(200);
     expect(getAllNotesBody.response.length).toBe(2);
 
-    await fetch(`${SERVER_URL}/deleteAllNotes`, {
+    const deleteAllNotesRes = await fetch(`${SERVER_URL}/deleteAllNotes`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-    });
+      }); 
+
+    const deleteAllNotesBody = await deleteAllNotesRes.json();
+
+    expect(deleteAllNotesRes.status).toBe(200)
+    expect(deleteAllNotesBody.response).toBe(`2 note(s) deleted.`)
   });
   
   test("/deleteNote - Delete a note", async () => {
@@ -141,12 +151,17 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
     expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`)
     expect(patchNoteRes.status).toBe(200);
 
-    await fetch(`${SERVER_URL}/deleteAllNotes`, {
+    const deleteAllNotesRes = await fetch(`${SERVER_URL}/deleteAllNotes`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-    });
+      }); 
+
+    const deleteAllNotesBody = await deleteAllNotesRes.json();
+
+    expect(deleteAllNotesRes.status).toBe(200)
+    expect(deleteAllNotesBody.response).toBe(`1 note(s) deleted.`)
   });
   
   test("/patchNote - Patch with just title", async () => {
@@ -181,12 +196,17 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
     expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`)
     expect(patchNoteRes.status).toBe(200);
 
-    await fetch(`${SERVER_URL}/deleteAllNotes`, {
+    const deleteAllNotesRes = await fetch(`${SERVER_URL}/deleteAllNotes`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-    });
+      }); 
+
+    const deleteAllNotesBody = await deleteAllNotesRes.json();
+
+    expect(deleteAllNotesRes.status).toBe(200)
+    expect(deleteAllNotesBody.response).toBe(`1 note(s) deleted.`)
   });
   
   test("/patchNote - Patch with just content", async () => {
@@ -221,12 +241,17 @@ test("/getAllNotes - Return list of zero notes for getAllNotes", async () => {
     expect(patchNoteBody.response).toBe(`Document with ID ${postNoteBody.insertedId} patched.`)
     expect(patchNoteRes.status).toBe(200);
 
-    await fetch(`${SERVER_URL}/deleteAllNotes`, {
+    const deleteAllNotesRes = await fetch(`${SERVER_URL}/deleteAllNotes`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-    });
+      }); 
+
+    const deleteAllNotesBody = await deleteAllNotesRes.json();
+
+    expect(deleteAllNotesRes.status).toBe(200)
+    expect(deleteAllNotesBody.response).toBe(`1 note(s) deleted.`)
   });
   
   test("/deleteAllNotes - Delete one note", async () => {
